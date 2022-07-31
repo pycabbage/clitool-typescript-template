@@ -8,23 +8,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'yarn'
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'yarn'
 
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
 
-      - name: Lint
-        run: yarn lint
-      - name: Test
-        run: yarn test
-      - name: Build
-        run: yarn build
+    - name: Lint
+      run: yarn lint
+    - name: Test
+      run: yarn test
+    - name: Build
+      run: yarn build
 
-      - name: Upload artifact
-        with:
-          name: built_executable
-          path: build
+    - name: Upload artifact
+      with:
+        name: built_executable
+        path: build
