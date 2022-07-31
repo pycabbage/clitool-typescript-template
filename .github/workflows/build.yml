@@ -25,6 +25,7 @@ jobs:
       run: yarn build
 
     - name: Upload artifact
+      uses: actions/upload-artifact@v3
       with:
         name: built_executable
         path: build
