@@ -10,7 +10,7 @@
     "prod": "webpack --mode production",
     "dev": "webpack --mode development",
     "pkg": "pkg .",
-    "eslint": "eslint src",
+    "eslint": "eslint './src/*.{js,ts}'",
     "eslint:fix": "eslint src --fix",
     "prettier": "prettier --write src"
   },
