@@ -1,4 +1,7 @@
 #!/usr/bin/env node
 
-process.argv.forEach(_=>console.log(_));
+import { add } from "./calc"
+
 console.log("Hello World!");
+console.log(add(1, 2));
+process.argv.forEach(_=>console.log(_));
