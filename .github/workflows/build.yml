@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -13,19 +13,50 @@ jobs:
       with:
         node-version: 18
         cache: 'yarn'
-
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-
     - name: Lint
       run: yarn lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'yarn'
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
     - name: Test
       run: yarn test
-    - name: Build
-      run: yarn build
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: built_executable
-        path: build
+  build:
+    runs-on: ubuntu-latest
+    env:
+      node-version: 18
+    strategy:
+      matrix:
+        arch: [win, linux, macos]
+
+    needs:
+      - lint
+      - test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        id: setup-node
+        with:
+          node-version: ${{ env.node-version }}
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: |
+          yarn prod
+          yarn pkg -t node${{ env.node-version }}-${{ strategy.matrix.arch }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ strategy.matrix.arch }}
+          path: build/*
