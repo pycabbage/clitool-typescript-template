@@ -54,9 +54,9 @@ jobs:
       - name: Build
         run: |
           yarn prod
-          yarn pkg -t node${{ env.node-version }}-${{ strategy.matrix.arch }}
+          yarn pkg -t node${{ env.node-version }}-${{ matrix.arch }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ strategy.matrix.arch }}
+          name: ${{ matrix.arch }}
           path: build/*
