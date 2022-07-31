@@ -4,11 +4,15 @@
   "author": "Cabbage Lettuce <33714346+pycabbage@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "build": "run-s -n test prod pkg",
+    "test": "jest",
+    "lint": "run-s -n eslint prettier",
+    "build": "run-s -n prod pkg",
     "prod": "webpack --mode production",
     "dev": "webpack --mode development",
     "pkg": "pkg .",
-    "test": "jest"
+    "eslint": "eslint src",
+    "eslint:fix": "eslint src --fix",
+    "prettier": "prettier --write src"
   },
   "pkg": {
     "outputPath": "build",

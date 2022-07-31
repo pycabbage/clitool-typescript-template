@@ -23,4 +23,7 @@ module.exports = {
     ],
     "require-jsdoc": 0,
   },
+  "extends": [
+    "prettier"
+  ],
 };
