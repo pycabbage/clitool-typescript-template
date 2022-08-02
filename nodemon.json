@@ -1,0 +1,6 @@
+{
+  "watch": "./src",
+  "ext": "ts",
+  "ignore": ["*.test.*"],
+  "exec": ["yarn", "run", "dev:run"]
+}
