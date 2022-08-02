@@ -1,0 +1,9 @@
+{
+  "name": "buildpackname",
+  "bin": {
+    "main": "dist/bundle.js"
+  },
+  "pkg": {
+    "outputPath": "build"
+  }
+}

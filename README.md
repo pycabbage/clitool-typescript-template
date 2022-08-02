@@ -11,6 +11,7 @@
 - eslint
 - prettier
 - [pkg](https://github.com/vercel/pkg)
+- GitHub Actions
 
 ## latest CI build link
 
