@@ -1,29 +1,29 @@
 /** @type {import("@typescript-eslint/utils").TSESLint.Linter.Config } */
-
-module.exports = {
-  "env": {
-    "browser": true,
-    "es2021": true,
-  },
-  "extends": [
+module.exports  = {
+  extends: [
     "google",
+    "prettier",
+    "plugin:jest/recommended",
+    "prettier"
   ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
+  env: {
+    browser: true,
+    es2021: true,
   },
-  "plugins": [
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+  },
+  plugins: [
     "@typescript-eslint",
+    "jest"
   ],
-  "rules": {
+  rules: {
     "quotes": [
       "warn",
       "double",
     ],
-    "require-jsdoc": 0,
+    "require-jsdoc": "off",
   },
-  "extends": [
-    "prettier"
-  ],
 };
