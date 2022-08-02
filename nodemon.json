@@ -1,6 +1,5 @@
 {
-  "watch": "./src",
-  "ext": "ts",
-  "ignore": ["*.test.*"],
-  "exec": ["yarn", "run", "dev:run"]
+  "watch": "./dist/bundle.js",
+  "ignore": ["*.test.*", "node_modules"],
+  "exec": ["yarn", "run", "dev:exec"]
 }
