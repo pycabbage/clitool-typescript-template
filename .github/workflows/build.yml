@@ -55,7 +55,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build
         run: |
-          yarn prod
+          yarn webpack:prod
           yarn pkg -t node${{ env.node-version }}-${{ matrix.arch }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
